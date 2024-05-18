@@ -7,3 +7,11 @@ export type InputProp = {
   required?: boolean;
   dataTestId?: string;
 };
+
+export type UserState = {
+  email: string;
+};
+
+export type RootState = {
+  user: UserState;
+};
