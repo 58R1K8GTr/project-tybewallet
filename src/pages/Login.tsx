@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Input from '../components/Input';
-import { addEmail } from '../redux/actions';
+import { addEmail } from '../redux/actions/emailAction';
 
 function Login() {
   const navigate = useNavigate();
