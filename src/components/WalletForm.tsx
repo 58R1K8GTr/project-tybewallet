@@ -14,7 +14,6 @@ function WalletForm() {
 
   useEffect(() => {
     dispatch(fetchCurrencies());
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [data, setData] = useState<ExpensesDataStateType>(
