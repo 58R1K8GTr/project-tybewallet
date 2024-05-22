@@ -10,7 +10,15 @@ function Table() {
 
   function handleClickDelete(event: React.MouseEvent<HTMLButtonElement>) {
     const { className } = event.target as HTMLButtonElement;
-    dispatch(deleteExpenseAction(Number(className)));
+    const id = Number(className);
+    const expense = expenses.find((item) => item.id === id);
+    if (expense) {
+      const value = Number(expense.value);
+      const { ask } = expense.exchangeRates[expense.currency];
+      dispatch(
+        deleteExpenseAction(id, value * Number(ask)),
+      );
+    }
   }
 
   return (

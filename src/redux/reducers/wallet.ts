@@ -23,7 +23,8 @@ function walletReducer(state = INITIAL_STATE, action: AnyAction) {
     case DELETE_EXPENSE:
       return {
         ...state,
-        expenses: state.expenses.filter((item) => item.id !== action.payload),
+        expenses: state.expenses.filter((item) => item.id !== action.payload[0]),
+        totalSum: Math.max(state.totalSum - action.payload[1], 0),
       };
     case REQUEST_STARTED:
       return {

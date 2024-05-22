@@ -1,8 +1,8 @@
 import { DELETE_EXPENSE } from '.';
 
-export function deleteExpenseAction(id: number) {
+export function deleteExpenseAction(id: number, value: number) {
   return {
     type: DELETE_EXPENSE,
-    payload: id,
+    payload: [id, value],
   };
 }
