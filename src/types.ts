@@ -74,7 +74,7 @@ export type ExpensesType = {
   id: number,
   value: string,
   description: string,
-  currency: string,
+  currency: keyof CurrenciesType,
   method: string,
   tag: string,
   exchangeRates: CurrenciesType
