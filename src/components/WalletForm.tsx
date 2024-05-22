@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import Input from './Input';
 import fetchCurrencies from '../redux/actions/fetchCurrenciesAction';
-import { AppDispatch, CurrenciesType, RootState } from '../types';
+import { AppDispatch, CurrenciesType, ExpensesDataStateType, RootState } from '../types';
 import { expensesAction } from '../redux/actions/expensesAction';
 import awesomeApi from '../services/AwesomeapiAPI';
 import { sumAction } from '../redux/actions/sumAction';
@@ -17,7 +17,7 @@ function WalletForm() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const [data, setData] = useState(
+  const [data, setData] = useState<ExpensesDataStateType>(
     {
       value: '0',
       description: '',

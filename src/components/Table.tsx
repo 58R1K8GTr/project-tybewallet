@@ -1,10 +1,17 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../types';
+import { deleteExpenseAction } from '../redux/actions/deleteExpenseAction';
 
 function Table() {
   const expenses = useSelector(
     (state: RootState) => state.wallet.expenses,
   );
+  const dispatch = useDispatch();
+
+  function handleClickDelete(event: React.MouseEvent<HTMLButtonElement>) {
+    const { className } = event.target as HTMLButtonElement;
+    dispatch(deleteExpenseAction(Number(className)));
+  }
 
   return (
     <div>
@@ -25,7 +32,7 @@ function Table() {
         <tbody>
           {
             expenses.map(
-              ({ description, tag, method, value, currency, exchangeRates }) => {
+              ({ id, description, tag, method, value, currency, exchangeRates }) => {
                 const { name, ask } = exchangeRates[currency];
                 return (
                   <tr key={ `${description}${tag}` }>
@@ -37,7 +44,15 @@ function Table() {
                     <td>{ Number(ask).toFixed(2) }</td>
                     <td>{ (Number(value) * Number(ask)).toFixed(2) }</td>
                     <td>Real</td>
-                    <td />
+                    <td>
+                      <button
+                        data-testid="delete-btn"
+                        className={ String(id) }
+                        onClick={ (event) => handleClickDelete(event) }
+                      >
+                        Deletar
+                      </button>
+                    </td>
                   </tr>
                 );
               },

@@ -80,6 +80,14 @@ export type ExpensesType = {
   exchangeRates: CurrenciesType
 };
 
+export type ExpensesDataStateType = {
+  value: string,
+  description: string,
+  currency: keyof CurrenciesType,
+  method: string,
+  tag: string,
+};
+
 export type WalletState = {
   currencies: string[];
   isLoading: false,

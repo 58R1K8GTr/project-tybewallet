@@ -8,6 +8,7 @@ import {
   REQUEST_STARTED,
   ADD_EXPENSES,
   SUM,
+  DELETE_EXPENSE,
 } from '../actions';
 
 const INITIAL_STATE: WalletState = {
@@ -19,6 +20,11 @@ const INITIAL_STATE: WalletState = {
 
 function walletReducer(state = INITIAL_STATE, action: AnyAction) {
   switch (action.type) {
+    case DELETE_EXPENSE:
+      return {
+        ...state,
+        expenses: state.expenses.filter((item) => item.id !== action.payload),
+      };
     case REQUEST_STARTED:
       return {
         ...state,
